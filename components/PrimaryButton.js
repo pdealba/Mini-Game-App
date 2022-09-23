@@ -10,6 +10,7 @@ function PrimaryButton(props) {
             : styles.buttonInnerContainer
         }
         android_ripple={{ color: "#640233" }}
+        onPress={props.onPress}
       >
         <Text style={styles.buttonText}>{props.children}</Text>
       </Pressable>
