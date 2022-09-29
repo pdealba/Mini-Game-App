@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { View, Text, StyleSheet, Alert } from "react-native";
 
 import Title from "../components/UI/Title";
@@ -19,12 +19,14 @@ let minNumber = 1;
 let maxNumber = 100;
 
 function GameScreen(props) {
-  const initialGuess = generateRandomBetween(
-    minNumber,
-    maxNumber,
-    props.userNumber
-  );
+  const initialGuess = generateRandomBetween(1, 100, props.userNumber);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
+
+  useEffect(() => {
+    if (currentGuess === props.userNumber) {
+      props.onGameOver();
+    }
+  }, [currentGuess, props.userNumber, props.onGameOver]);
 
   function nextGuessNumber(direction) {
     if (
