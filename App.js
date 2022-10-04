@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { StyleSheet, ImageBackground, SafeAreaView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
+import { StatusBar } from "expo-status-bar";
 
 import Colors from "./constants/colors";
 
@@ -58,19 +59,22 @@ export default function App() {
   }
 
   return (
-    <LinearGradient
-      colors={[Colors.primary700, Colors.accent500]}
-      style={styles.rootContainer}
-    >
-      <ImageBackground
-        source={require("./assets/images/background.png")}
-        resizeMode="cover"
+    <>
+      <StatusBar style="light" />
+      <LinearGradient
+        colors={[Colors.primary700, Colors.accent500]}
         style={styles.rootContainer}
-        imageStyle={styles.backgroudImage}
       >
-        <SafeAreaView style={styles.rootContainer}>{screens}</SafeAreaView>
-      </ImageBackground>
-    </LinearGradient>
+        <ImageBackground
+          source={require("./assets/images/background.png")}
+          resizeMode="cover"
+          style={styles.rootContainer}
+          imageStyle={styles.backgroudImage}
+        >
+          <SafeAreaView style={styles.rootContainer}>{screens}</SafeAreaView>
+        </ImageBackground>
+      </LinearGradient>
+    </>
   );
 }
 
